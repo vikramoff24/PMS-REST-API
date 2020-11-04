@@ -28,31 +28,31 @@ public class ProjectController {
 	@Autowired
 	private ProjectRepository projectRepository;
 	
-	//Get All Employees
+	//Get All project
 	
 	@GetMapping("/projects")
-	public List<Project> getAllEmployees()
+	public List<Project> getAllProjects()
 	{
 	return projectRepository.findAll();	
 	}
-	//Create Employee
+	//Create  project
 	@PostMapping("/projects")
-	public Project createEmployees(@Valid @RequestBody Project project)
+	public Project createProjects(@Valid @RequestBody Project project)
 	{
 	return projectRepository.save(project);	
 	}
-	//Get Employee By Id
+	//Get project By Id
 	@GetMapping("/projects/{id}")
-	public ResponseEntity<Project> getEmployeeById(@PathVariable(value = "id") Long projectId)
+	public ResponseEntity<Project> getProjectById(@PathVariable(value = "id") Long projectId)
 			throws ResourceNotFoundException {
-		Project employee = projectRepository.findById(projectId)
+		Project project = projectRepository.findById(projectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Project not found for this id :: " + projectId));
-		return ResponseEntity.ok().body(employee);
+		return ResponseEntity.ok().body(project);
 	}
 	
-	//Update a Employee
+	//Update a  project
 	@PutMapping("/projects/{id}")
-	public ResponseEntity<Project> updateEmployee(@PathVariable(value = "id") Long projectId,
+	public ResponseEntity<Project> updateProject(@PathVariable(value = "id") Long projectId,
 			@Valid @RequestBody Project projectDetails) throws ResourceNotFoundException {
 		Project project = projectRepository.findById(projectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Projct not found for this id :: " + projectId));
@@ -64,15 +64,15 @@ public class ProjectController {
 		final Project updatedProject = projectRepository.save(project);
 		return ResponseEntity.ok(updatedProject);
 	}
-	//delete employee by id
+	//delete project by id
 		
-		@DeleteMapping("/employees/{id}")
-		public ResponseEntity deleteEmployee(@PathVariable(value = "id") Long employeeId)
+		@DeleteMapping("/projects/{id}")
+		public ResponseEntity deleteProject(@PathVariable(value = "id") Long projectId)
 				throws ResourceNotFoundException {
-			employeeRepository.findById(employeeId)
-					.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+			projectRepository.findById(projectId)
+					.orElseThrow(() -> new ResourceNotFoundException("Project not found for this id :: " + projectId));
 
-			employeeRepository.deleteById(employeeId);
+			projectRepository.deleteById(projectId);
 //			Map<String, Boolean> response = new HashMap<>();
 //			response.put("deleted", Boolean.TRUE);
 			return ResponseEntity.ok().build();
@@ -83,6 +83,3 @@ public class ProjectController {
 }
 
 
-public class ProjectController {
-
-}
