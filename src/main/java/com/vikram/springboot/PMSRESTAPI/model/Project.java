@@ -1,5 +1,93 @@
 package com.vikram.springboot.PMSRESTAPI.model;
 
-public class Project {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+//JPA ENTITY CLASS
+
+@Entity	
+@Table(name="projects")
+public class Project {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+private long id;
+	
+	@Column(name="project_name")	
+private String projectName;
+	@Column(name="description")	
+private String description;
+	@Column(name="author_id")	
+private String authorId;
+	@Column(name="status")	
+private int status;
+
+public Project() {
+	super();
+}
+
+
+
+
+public Project(long id, String projectName, String description, String authorId,int status) {
+	super();
+	this.id = id;
+	this.projectName = projectName;
+	this.description = description;
+	this.authorId = authorId;
+	this.status=status;
+}
+
+public long getId() {
+	return id;
+}
+
+
+public void setId(long id) {
+	this.id = id;
+}
+
+
+public String getProjectName() {
+	return projectName;
+}
+
+
+public void setProjectName(String projectName) {
+	this.projectName = projectName;
+}
+
+
+public String getDescription() {
+	return description;
+}
+
+
+public void setDescription(String description) {
+	this.description = description;
+}
+
+
+public String getAuthorId() {
+	return authorId;
+}
+
+
+public void setAuthorId(String authorId) {
+	this.authorId = authorId;
+}
+
+
+public int getStatus() {
+	return status;
+}
+
+
+public void setStatus(int status) {
+	this.status = status;
+}
 }
