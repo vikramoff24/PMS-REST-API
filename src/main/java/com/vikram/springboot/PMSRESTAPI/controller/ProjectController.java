@@ -51,11 +51,11 @@ public class ProjectController {
 	}
 	
 	//Update a Employee
-	@PutMapping("/employees/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
-			@Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
-		Employee employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+	@PutMapping("/projects/{id}")
+	public ResponseEntity<Project> updateEmployee(@PathVariable(value = "id") Long projectId,
+			@Valid @RequestBody Project projectDetails) throws ResourceNotFoundException {
+		Project project = projectRepository.findById(projectId)
+				.orElseThrow(() -> new ResourceNotFoundException("Projct not found for this id :: " + projectId));
 
 		employee.setEmailId(employeeDetails.getEmailId());
 		employee.setLastName(employeeDetails.getLastName());
