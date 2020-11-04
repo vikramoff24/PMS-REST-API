@@ -43,10 +43,10 @@ public class ProjectController {
 	}
 	//Get Employee By Id
 	@GetMapping("/projects/{id}")
-	public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+	public ResponseEntity<Project> getEmployeeById(@PathVariable(value = "id") Long projectId)
 			throws ResourceNotFoundException {
-		Employee employee = employeeRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+		Project employee = projectRepository.findById(projectId)
+				.orElseThrow(() -> new ResourceNotFoundException("Project not found for this id :: " + projectId));
 		return ResponseEntity.ok().body(employee);
 	}
 	
@@ -57,11 +57,12 @@ public class ProjectController {
 		Project project = projectRepository.findById(projectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Projct not found for this id :: " + projectId));
 
-		employee.setEmailId(employeeDetails.getEmailId());
-		employee.setLastName(employeeDetails.getLastName());
-		employee.setFirstName(employeeDetails.getFirstName());
-		final Employee updatedEmployee = employeeRepository.save(employee);
-		return ResponseEntity.ok(updatedEmployee);
+		project.setProjectName(projectDetails.getProjectName());
+		project.setDescription(projectDetails.getDescription());
+		project.setAuthorId(projectDetails.getAuthorId());
+		project.setStatus(projectDetails.getStatus());
+		final Project updatedProject = projectRepository.save(project);
+		return ResponseEntity.ok(updatedProject);
 	}
 	//delete employee by id
 		
