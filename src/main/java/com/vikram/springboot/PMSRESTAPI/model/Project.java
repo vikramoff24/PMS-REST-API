@@ -28,14 +28,8 @@ private int status;
 public Project() {
 	super();
 }
-
-
-
-
-
 public Project(long id, String projectId, String projectName, String description, String authorId, int status) {
 	super();
-	this.id = id;
 	this.projectId = projectId;
 	this.projectName = projectName;
 	this.description = description;
@@ -43,34 +37,14 @@ public Project(long id, String projectId, String projectName, String description
 	this.status = status;
 }
 
-
-
-
-
-public long getId() {
-	return id;
-}
-
-
-public void setId(long id) {
-	this.id = id;
-}
-
-
 public String getProjectId() {
 	return projectId;
 }
 
 
-
-
-
 public void setProjectId(String projectId) {
 	this.projectId = projectId;
 }
-
-
-
 
 
 public String getProjectName() {
