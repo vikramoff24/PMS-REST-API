@@ -14,9 +14,8 @@ import javax.persistence.Table;
 public class Project {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-private long id;
-	
+    @Column(name="project_id")
+private String projectId;
 	@Column(name="project_name")	
 private String projectName;
 	@Column(name="description")	
@@ -33,14 +32,20 @@ public Project() {
 
 
 
-public Project(long id, String projectName, String description, String authorId,int status) {
+
+public Project(long id, String projectId, String projectName, String description, String authorId, int status) {
 	super();
 	this.id = id;
+	this.projectId = projectId;
 	this.projectName = projectName;
 	this.description = description;
 	this.authorId = authorId;
-	this.status=status;
+	this.status = status;
 }
+
+
+
+
 
 public long getId() {
 	return id;
@@ -50,6 +55,22 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
+
+
+public String getProjectId() {
+	return projectId;
+}
+
+
+
+
+
+public void setProjectId(String projectId) {
+	this.projectId = projectId;
+}
+
+
+
 
 
 public String getProjectName() {
