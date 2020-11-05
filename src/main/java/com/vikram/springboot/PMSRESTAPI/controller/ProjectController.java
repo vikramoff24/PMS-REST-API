@@ -43,7 +43,7 @@ public class ProjectController {
 	}
 	//Get project By Id
 	@GetMapping("/projects/{id}")
-	public ResponseEntity<Project> getProjectById(@PathVariable(value = "projectId") Long projectId)
+	public ResponseEntity<Project> getProjectById(@PathVariable(value = "id") Long projectId)
 			throws ResourceNotFoundException {
 		Project project = projectRepository.findById(projectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Project not found for this id :: " + projectId));
@@ -52,11 +52,11 @@ public class ProjectController {
 	
 	//Update a  project
 	@PutMapping("/projects/{id}")
-	public ResponseEntity<Project> updateProject(@PathVariable(value = "projectId") Long projectId,
+	public ResponseEntity<Project> updateProject(@PathVariable(value = "id") Long projectId,
 			@Valid @RequestBody Project projectDetails) throws ResourceNotFoundException {
 		Project project = projectRepository.findById(projectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Projct not found for this id :: " + projectId));
-
+        project.setProjectId(projectDetails.getProjectId());
 		project.setProjectName(projectDetails.getProjectName());
 		project.setDescription(projectDetails.getDescription());
 		project.setAuthorId(projectDetails.getAuthorId());
@@ -67,7 +67,7 @@ public class ProjectController {
 	//delete project by id
 		
 		@DeleteMapping("/projects/{id}")
-		public ResponseEntity deleteProject(@PathVariable(value = "projectId") Long projectId)
+		public ResponseEntity deleteProject(@PathVariable(value = "id") Long projectId)
 				throws ResourceNotFoundException {
 			projectRepository.findById(projectId)
 					.orElseThrow(() -> new ResourceNotFoundException("Project not found for this id :: " + projectId));

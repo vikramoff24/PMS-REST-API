@@ -15,7 +15,7 @@ public class Project {
 	
 	@Id
     @Column(name="project_id")
-private String projectId;
+private long projectId;
 	@Column(name="project_name")	
 private String projectName;
 	@Column(name="description")	
@@ -28,7 +28,7 @@ private int status;
 public Project() {
 	super();
 }
-public Project(long id, String projectId, String projectName, String description, String authorId, int status) {
+public Project(long projectId, String projectName, String description, String authorId, int status) {
 	super();
 	this.projectId = projectId;
 	this.projectName = projectName;
@@ -37,12 +37,12 @@ public Project(long id, String projectId, String projectName, String description
 	this.status = status;
 }
 
-public String getProjectId() {
+public long getProjectId() {
 	return projectId;
 }
 
 
-public void setProjectId(String projectId) {
+public void setProjectId(long projectId) {
 	this.projectId = projectId;
 }
 
